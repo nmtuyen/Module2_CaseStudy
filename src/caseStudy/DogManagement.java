@@ -6,7 +6,8 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class DogManagement {
-    private ArrayList<Dog> dogArrayList;
+    private static ArrayList<Dog> dogArrayList;
+    Bill bill = new Bill();
 
 
     public ArrayList<Dog> getDogArrayList() {
@@ -79,5 +80,14 @@ public class DogManagement {
                 return o1.getDogBreed().compareTo(o2.getDogBreed());
             }
         });
+    }
+    public void sellById(String id){
+        ArrayList<Dog> listSellDog;
+        int index = checkByID(id);
+        if (index == -1 ){
+            System.out.println("Chó bạn mua hiện không có");
+        }else{
+
+        }
     }
 }

@@ -1,29 +1,39 @@
 package caseStudy;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Bill {
-    private String idBill;
+    private String id;
+    private String nameCus;
     private String nb;
-    private List<Dog> dogList;
-    private int sale;
+    private ArrayList<Dog> listDog;
+    private int sales;
 
-    public Bill(String idBill, String nb, List<Dog> dogList, int sale) {
-        this.idBill = idBill;
+    public Bill(String id, String nameCus, String nb) {
+        this.id = id;
+        this.nameCus = nameCus;
         this.nb = nb;
-        this.dogList = dogList;
-        this.sale = sale;
+        this.listDog = new ArrayList<>();
     }
 
     public Bill() {
     }
 
-    public String getIdBill() {
-        return idBill;
+    public String getId() {
+        return id;
     }
 
-    public void setIdBill(String idBill) {
-        this.idBill = idBill;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNameCus() {
+        return nameCus;
+    }
+
+    public void setNameCus(String nameCus) {
+        this.nameCus = nameCus;
     }
 
     public String getNb() {
@@ -34,29 +44,30 @@ public class Bill {
         this.nb = nb;
     }
 
-    public List<Dog> getDogList() {
-        return dogList;
+    public ArrayList<Dog> getBillList() {
+        return listDog;
     }
 
-    public void setDogList(List<Dog> dogList) {
-        this.dogList = dogList;
+    public void setBillList(ArrayList<Dog> billList) {
+        this.listDog = billList;
     }
 
-    public int getSale() {
-        return sale;
+    public int getSales() {
+        return sales;
     }
 
-    public void setSale(int sale) {
-        this.sale = sale;
+    public void setSales(int sales) {
+        this.sales = sales;
     }
 
     @Override
     public String toString() {
         return "Bill{" +
-                "idBill='" + idBill + '\'' +
-                ", nb='" + nb + '\'' +
-                ", dogList=" + dogList +
-                ", sale=" + sale +
+                "id='" + id + '\'' +
+                ", nameCus='" + nameCus + '\'' +
+                ", nb=" + nb +
+                ", billList=" + listDog +
+                ", sales=" + sales +
                 '}';
     }
 }
