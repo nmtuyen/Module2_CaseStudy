@@ -53,10 +53,13 @@ public class Bill {
     }
 
     public int getSales() {
+        for (Dog dog:listDog) {
+            sales += dog.getPrice();
+        }
         return sales;
     }
 
-    public void setSales(int sales) {
+    public void setSales() {
         this.sales = sales;
     }
 
@@ -67,7 +70,7 @@ public class Bill {
                 ", nameCus='" + nameCus + '\'' +
                 ", nb=" + nb +
                 ", billList=" + listDog +
-                ", sales=" + sales +
+                ", sales=" + getSales() +
                 '}';
     }
 }

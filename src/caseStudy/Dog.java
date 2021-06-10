@@ -5,14 +5,14 @@ public class Dog {
     private String dogBreed;
     private String source;
     private String classify;
-    private String age;
-    private String weigth;
-    private String price;
+    private int age;
+    private double weigth;
+    private int price;
 
     public Dog() {
     }
 
-    public Dog(String id, String dogBreed, String source, String classify, String age, String weigth, String price) {
+    public Dog(String id, String dogBreed, String source, String classify, int age, double weigth, int price) {
         this.id = id;
         this.dogBreed = dogBreed;
         this.source = source;
@@ -54,27 +54,27 @@ public class Dog {
         this.classify = classify;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public String getWeigth() {
+    public double getWeigth() {
         return weigth;
     }
 
-    public void setWeigth(String weigth) {
+    public void setWeigth(double weigth) {
         this.weigth = weigth;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

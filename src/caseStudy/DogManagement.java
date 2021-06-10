@@ -1,5 +1,6 @@
 package caseStudy;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 
 public class DogManagement {
     private static ArrayList<Dog> dogArrayList;
-    Bill bill = new Bill();
+    BillManagement billManagement = new BillManagement();
 
 
     public ArrayList<Dog> getDogArrayList() {
@@ -20,11 +21,7 @@ public class DogManagement {
 
     public DogManagement() {
         dogArrayList = new ArrayList<>();
-        dogArrayList.add(new Dog("123", "Alaska", "China", "chó kéo xe", "10-15", "30", "800"));
-        dogArrayList.add(new Dog("123", "Pitbull", "American", "chó chọi", "18-13", "35", "1000"));
-        dogArrayList.add(new Dog("456", "Mông Cộc", "Việt Nam", "chó giữ nhà", "18-14", "15", "300"));
-        dogArrayList.add(new Dog("789", "Mông Cộc", "Việt Nam", "chó giữ nhà", "18-14", "17", "300"));
-        dogArrayList.add(new Dog("234", "Alaska", "China", "chó kéo xe", "10-15", "30", "850"));
+
     }
     public void add(Dog dog){
         dogArrayList.add(dog);
@@ -50,7 +47,7 @@ public class DogManagement {
         }else
             dogArrayList.set(index, dog);
     }
-    public void delete(String id){
+    public void sellById(String id){
         Scanner scanner = new Scanner(System.in);
         int index = checkByID(id);
         if (index == -1){
@@ -62,10 +59,10 @@ public class DogManagement {
             switch (choice){
                 case 1:
                     dogArrayList.remove(index);
-                    System.out.println("Đã xóa thành công");
+                    System.out.println("Đã bán thành công");
                     break;
                 case 2:
-                    System.out.println("Đã hủy lệnh xóa");
+                    System.out.println("Đã hủy lệnh bán");
                     break;
                 default:
                     System.out.print("Mời nhập lại: ");
@@ -81,13 +78,21 @@ public class DogManagement {
             }
         });
     }
-    public void sellById(String id){
-        ArrayList<Dog> listSellDog;
-        int index = checkByID(id);
-        if (index == -1 ){
-            System.out.println("Chó bạn mua hiện không có");
-        }else{
-
+//    public ArrayList<Dog> findById(String id){
+//        ArrayList<caseStudy.Dog> arrayId =new ArrayList<>();
+//        for (int i = 0; i < dogArrayList.size(); i++){
+//            if (dogArrayList.get(i).getId().equals(id)){
+//                arrayId.add(dogArrayList.get(i));
+//            }
+//        }
+//        return arrayId;
+//    }
+    public Dog findById(String id){
+        for(int i = 0; i < dogArrayList.size(); i++){
+            if (dogArrayList.get(i).getId().equals(id)){
+                return dogArrayList.get(i);
+            }
         }
+        return null;
     }
 }
