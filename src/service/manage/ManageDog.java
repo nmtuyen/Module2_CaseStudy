@@ -1,6 +1,6 @@
-package manage;
+package service.manage;
 
-import dog.Dog;
+import model.Dog;
 
 public interface ManageDog {
     public int checkById(String id);

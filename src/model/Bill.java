@@ -1,10 +1,9 @@
-package bill;
+package model;
 
-import dog.Dog;
-
-public class Bill {
+public class Bill implements{
     private String id;
     private String nameCus;
+    private String phoneNumber;
     private String date;
     private Dog dog;
     private int sales;
@@ -12,11 +11,11 @@ public class Bill {
     public Bill() {
     }
 
-    public Bill(String id, String nameCus, String date, Dog dog, int sales) {
+    public Bill(String id, String nameCus, String phoneNumber, String date, int sales) {
         this.id = id;
         this.nameCus = nameCus;
+        this.phoneNumber = phoneNumber;
         this.date = date;
-        this.dog = dog;
         this.sales = sales;
     }
 
@@ -36,6 +35,14 @@ public class Bill {
         this.nameCus = nameCus;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getDate() {
         return date;
     }
@@ -44,7 +51,7 @@ public class Bill {
         this.date = date;
     }
 
-    public Dog getDog() {
+    public Dog getDog(Dog dogSell) {
         return dog;
     }
 
@@ -63,11 +70,13 @@ public class Bill {
     @Override
     public String toString() {
         return "Bill{" +
-                "id='" + id + '\'' +
-                ", nameCus='" + nameCus + '\'' +
-                ", date='" + date + '\'' +
-                ", dog=" + dog +
+                "id='" + id + '\'' +'\n'+
+                ", nameCus='" + nameCus + '\'' +'\n'+
+                ", phoneNumber='" + phoneNumber + '\'' +'\n'+
+                ", date='" + date + '\'' +'\n'+
+                ", dog=" + dog +'\n'+
                 ", sales=" + dog.getPrice() +
                 '}';
     }
+
 }

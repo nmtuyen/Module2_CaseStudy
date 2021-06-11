@@ -1,9 +1,8 @@
-package manage;
+package service.manage;
 
-import bill.Bill;
+import model.Bill;
 
 public interface ManageBill {
     public void addBill(Bill bill);
-    public void deleteBill(String id);
     public void sortBySales();
 }

@@ -1,6 +1,7 @@
 id,DogBreed,Source,Classify,Age,Weigth,Price
-123,Alaska,China,chó kéo xe,10-15,30-50,800
-123,Pitbull,American,chó chọi,18-13,30-50,1000
-456,Mông Cộc,Việt Nam,chó giữ nhà,18-14,15-20,300
-789,Mông Cộc,Việt Nam,chó giữ nhà,18-14,15-17,300
-234,Alaska,China,chó kéo xe,10-15,30-50,850
+123,Alaska,China,chó kéo xe,3,40.5,800
+564,Pitbull,Mĩ,chó chọi,3,35.0,900
+321,Phốc,Pháp,chó cảnh,2,5.5,800
+679,Begie,Đức,chó giữ nhà,4,50.5,800
+564,Alaska,China,chó kéo xe,5,39.5,800
+654,Alaska,China,Giữ nhà,4,5.5,850

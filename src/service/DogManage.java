@@ -1,6 +1,7 @@
-package dog;
+package service;
 
-import manage.ManageDog;
+import model.Dog;
+import service.manage.ManageDog;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,27 +9,41 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class DogManage implements ManageDog {
-    ArrayList<Dog> dogList;
+    private ArrayList<Dog> dogList;
+
+    public ArrayList<Dog> getDogList() {
+        return dogList;
+    }
+
+    public void setDogList(ArrayList<Dog> dogList) {
+        this.dogList = dogList;
+    }
 
     public DogManage() {
         dogList = new ArrayList<>();
+
+        dogList.add(new Dog("123", "Alaska", "China", "chó kéo xe", 3, 40.5, 800));
+        dogList.add(new Dog("564", "Pitbull", "Mĩ", "chó chọi", 3, 35, 900));
+        dogList.add(new Dog("321", "Phốc", "Pháp", "chó cảnh", 2, 5.5, 700));
+        dogList.add(new Dog("679", "Begie", "Đức", "chó giữ nhà", 4, 50.5, 300));
+        dogList.add(new Dog("564", "Alaska", "China", "chó kéo xe", 5, 39.5, 450));
     }
     public Dog input(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhập thông tin chó");
-        System.out.println("Nhập ID chó: ");
+        System.out.println("Nhập thông tin pet");
+        System.out.print("Nhập ID chó: ");
         String id = scanner.nextLine();
-        System.out.println("Nhập giống chó");
+        System.out.print("Nhập giống pet: ");
         String dogBreed = scanner.nextLine();
-        System.out.println("Nhập nguồn gốc chó");
+        System.out.print("Nhập nguồn gốc pet: ");
         String source = scanner.nextLine();
-        System.out.println("Nhập loại chó");
+        System.out.print("Nhập loại pet: ");
         String classify = scanner.nextLine();
-        System.out.println("Nhập tuổi chó");
+        System.out.print("Nhập tuổi pet: ");
         int age = scanner.nextInt();
-        System.out.println("Nhập cân nặng chó");
+        System.out.print("Nhập cân nặng pet: ");
         double weigth = scanner.nextDouble();
-        System.out.println("Nhập giá chó");
+        System.out.print("Nhập giá pet: ");
         int price = scanner.nextInt();
         return new Dog(id, dogBreed, source, classify, age, weigth, price);
     }

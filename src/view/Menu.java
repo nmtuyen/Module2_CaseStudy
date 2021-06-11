@@ -1,37 +1,33 @@
-import bill.Bill;
-import bill.BillManage;
-import dog.Dog;
-import dog.DogManage;
-import dog.DogManagement;
+package view;
+
+import model.*;
+import service.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
     public static String LIST_DOG = "ListDog.csv";
+    public static String LIST_BILL = "ListBill.csv";
     public static void main(String[] args) throws IOException {
-        DogManagement dogManagement = new DogManagement();
         BillManage billManage = new BillManage();
         DogManage dogManage = new DogManage();
-        dogManage.add(new Dog("123", "Alaska", "China", "chó kéo xe", 3, 30.5, 800));
-        dogManage.add(new Dog("564", "Pitbull", "Mĩ", "chó chọi", 3, 35.5, 900));
-        dogManage.add(new Dog("321", "Phốc", "Pháp", "chó cảnh", 2, 30.5, 800));
-        dogManage.add(new Dog("679", "Begie", "Đức", "chó giữ nhà", 4, 30.5, 800));
-        dogManage.add(new Dog("564", "Alaska", "China", "chó kéo xe", 5, 30.5, 800));
+        ReadWriteFile readWriteFile = new ReadWriteFile();
+        ReadWriteBill readWriteBill = new ReadWriteBill();
+        InputOutput inputOutput = new InputOutput();
 
-        dogManagement.display(dogManagement.getDogArrayList());
 
-        billManage.addBill(new Bill("2313", "Tuyền", "10/03/2021", new Dog("123", "Alaska", "China", "chó kéo xe", 3, 30.5, 800), 800));
         while (true){
             menu();
             Scanner scanner = new Scanner(System.in);
             System.out.println("Nhập lựa chọn: ");
             int choice = scanner.nextInt();
+            scanner.nextLine();
             switch (choice){
                 case 1:
                     System.out.println("Nhập thông tin pet muốn thêm");
                     dogManage.add(dogManage.input());
+                    readWriteFile.writeFile(LIST_DOG,dogManage.getDogList());
                     break;
                 case 2:
                     dogManage.display();
@@ -44,46 +40,74 @@ public class Menu {
                 case 4:
                     System.out.println("Nhập lựa chọn tìm kiếm: 1.Tìm theo id   2.Tìm theo khoảng giá   3.Tìm theo giống");
                     int choice2 = scanner.nextInt();
+                    scanner.nextLine();
                     switch (choice2){
                         case 1:
                             System.out.print("Nhập Id pet cần tìm: ");
                             String idFind = scanner.nextLine();
-                            dogManage.findById(idFind);
+                            scanner.nextLine();
+                            for (int i = 0; i < dogManage.findById(idFind).size(); i++){
+                                System.out.println(dogManage.findById(idFind).get(i));
+                        }
                             break;
                         case 2:
                             System.out.println("Nhập khoảng giá cần tìm kiếm");
                             System.out.print("Nhập giá thấp nhất: ");
                             int min = scanner.nextInt();
+                            scanner.nextLine();
                             System.out.print("Nhập giá cao nhất: ");
                             int max = scanner.nextInt();
-                            dogManage.findByPrice(min, max);
+                            scanner.nextLine();
+                            for (int i = 0; i < dogManage.findByPrice(min, max).size(); i++){
+                                System.out.println(dogManage.findByPrice(min, max).get(i));
+                            }
                             break;
                         case 3:
                             System.out.println("Nhập giống pet cần tìm: ");
                             String dogBreed = scanner.nextLine();
-                            dogManage.findByDogBreed(dogBreed);
+                            for (int i = 0; i <dogManage.findByDogBreed(dogBreed).size(); i++ ){
+                                System.out.println(dogManage.findByDogBreed(dogBreed).get(i).toString());
+                            }
                             break;
                         default:
                             System.out.println("Mời nhập lại");
+                            break;
                     }
+                    break;
                 case 5:
-                    System.out.println("Sắp xếp pet: 1.Sắp xếp theo giá    3.Sắp xếp theo nguồn gốc");
+                    System.out.println("Sắp xếp pet: 1.Sắp xếp theo giá    2.Sắp xếp theo nguồn gốc");
                     int select = scanner.nextInt();
                     switch (select){
                         case 1:
                             dogManage.sortByPrice();
+                            dogManage.display();
                             break;
                         case 2:
                             dogManage.sortByDogBreed();
+                            dogManage.display();
                             break;
                         default:
                             System.out.println("Mời nhập lại");
+                            break;
                     }
+                    break;
                 case 6:
-                    System.out.println("Nhập id pet cần bán");
-                    String idSell = scanner.nextLine();
-                    billManage.addBill();
-
+                    System.out.println("Nhập id pet muốn bán");
+                    String idPetSell = scanner.nextLine();
+                    Dog dogSell = dogManage.sellDog(idPetSell);
+                    Bill bill = new Bill();
+                    System.out.println("Nhập id bill");
+                    String idBill = scanner.nextLine();
+                    bill.setId(idBill);
+                    bill = inputOutput.inputBill();
+                    bill.setDog(dogSell);
+                    bill.setSales(dogSell.getPrice());
+                    billManage.addBill(bill);
+                    billManage.display();
+                    readWriteBill.writeBill(LIST_BILL, billManage.getBillArrayList());
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + choice);
             }
         }
     }
@@ -93,7 +117,7 @@ public class Menu {
         System.out.println("2. Hiển thị danh sách");
         System.out.println("3. Sửa thông tin");
         System.out.println("4. Tìm kiếm");
-        System.out.println("5. Sắp xếp danh sách theo xuất xứ");
+        System.out.println("5. Sắp xếp theo xuất xứ");
         System.out.println("6. Bán");
         System.out.println("0. Thoát chương trình");
     }
