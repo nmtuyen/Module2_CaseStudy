@@ -1,6 +1,7 @@
-package caseStudy;
+package dog;
 
-import java.awt.*;
+import manage.ManageDog;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -8,7 +9,6 @@ import java.util.Scanner;
 
 public class DogManagement {
     private static ArrayList<Dog> dogArrayList;
-    BillManagement billManagement = new BillManagement();
 
 
     public ArrayList<Dog> getDogArrayList() {
@@ -32,7 +32,8 @@ public class DogManagement {
         }
         System.out.println("---------------------------------------");
     }
-    public int checkByID(String id){
+
+    public int checkById(String id){
         for (int i = 0; i < dogArrayList.size(); i++) {
             if (dogArrayList.get(i).getId().equals(id)) {
                 return i;
@@ -41,7 +42,7 @@ public class DogManagement {
         return -1;
     }
     public void edit(String id, Dog dog){
-        int index = checkByID(id);
+        int index = checkById(id);
         if (index == -1){
             System.out.println("không có thông tin id chó cần sửa");
         }else
@@ -49,7 +50,7 @@ public class DogManagement {
     }
     public void sellById(String id){
         Scanner scanner = new Scanner(System.in);
-        int index = checkByID(id);
+        int index = checkById(id);
         if (index == -1){
             System.out.println("không có thông tin chó cần xóa");
         }else{

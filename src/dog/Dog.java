@@ -1,4 +1,4 @@
-package caseStudy;
+package dog;
 
 public class Dog {
     private String id;

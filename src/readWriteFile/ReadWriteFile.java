@@ -1,7 +1,8 @@
-package caseStudy;
+package readWriteFile;
+
+import dog.Dog;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ReadWriteFile {
