@@ -2,11 +2,11 @@ package service.manage;
 
 import model.Dog;
 
-public interface ManageDog {
-    public int checkById(String id);
-    public void add(Dog dog);
-    public void editById(String id);
-    public void delete(String id);
-    public Dog sellDog(String id);
+public interface ManageDog{
+    int checkById(String id);
+    void add(Dog dog);
+    void editById(String id);
+    void delete(String id);
+    Dog sellDog(String id);
 
 }

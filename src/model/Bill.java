@@ -1,22 +1,28 @@
 package model;
 
-public class Bill implements{
+import service.DogManage;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Bill {
     private String id;
     private String nameCus;
     private String phoneNumber;
     private String date;
-    private Dog dog;
+    private List<Dog> dogList;
     private int sales;
 
     public Bill() {
     }
 
-    public Bill(String id, String nameCus, String phoneNumber, String date, int sales) {
+    public Bill(String id, String nameCus, String phoneNumber, String date) {
         this.id = id;
         this.nameCus = nameCus;
         this.phoneNumber = phoneNumber;
         this.date = date;
-        this.sales = sales;
+        this.dogList = new ArrayList<>();
+
     }
 
     public String getId() {
@@ -51,32 +57,34 @@ public class Bill implements{
         this.date = date;
     }
 
-    public Dog getDog(Dog dogSell) {
-        return dog;
+    public List<Dog> getDogList() {
+        return dogList;
     }
 
-    public void setDog(Dog dog) {
-        this.dog = dog;
+    public void setDogList(List<Dog> dogList) {
+        this.dogList = dogList;
     }
 
     public int getSales() {
-        return dog.getPrice();
+        return sales;
     }
 
-    public void setSales(int sales) {
-        this.sales = sales;
+    public void setSales() {
+        for (int i = 0; i < dogList.size(); i++) {
+            this.sales += dogList.get(i).getPrice();
+        }
+
     }
 
     @Override
     public String toString() {
         return "Bill{" +
-                "id='" + id + '\'' +'\n'+
-                ", nameCus='" + nameCus + '\'' +'\n'+
-                ", phoneNumber='" + phoneNumber + '\'' +'\n'+
-                ", date='" + date + '\'' +'\n'+
-                ", dog=" + dog +'\n'+
-                ", sales=" + dog.getPrice() +
+                "id='" + id + "\n" +
+                ", nameCus='" + nameCus + "\n" +
+                ", phoneNumber='" + phoneNumber + "\n" +
+                ", date='" + date + "\n" +
+                ", dogList=" + dogList+ "\n" +
+                ", sales=" + sales + "\n" +
                 '}';
     }
-
 }

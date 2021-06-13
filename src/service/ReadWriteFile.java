@@ -9,7 +9,7 @@ public class ReadWriteFile {
     public void writeFile(String pathFile, List<Dog> dogs) throws IOException {
         FileWriter fileWriter = new FileWriter(pathFile);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        String str = "id,DogBreed,Source,Classify,Age,Weigth,Price\n";
+        String str = "Mã số,Giống chó,Nguồn gốc,Loại chó,Tuổi,Cân nặng,Giá tiền\n";
         for (Dog dog : dogs){
             str += dog.getId()+","+ dog.getDogBreed()+","+dog.getSource()+","+dog.getClassify()+","+dog.getAge()+","+dog.getWeigth()+","+dog.getPrice()+"\n";
         }

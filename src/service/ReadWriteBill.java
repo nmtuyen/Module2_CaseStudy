@@ -12,7 +12,7 @@ public class ReadWriteBill {
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriterBill);
         String str = "id ,Name customer, Phone number, Date , Dog Infor ,Price\n";
         for (Bill bill : bills){
-            str += bill.getId()+","+ bill.getNameCus()+","+bill.getPhoneNumber()+","+bill.getDate()+","+bill.getDog()+"\n";
+            str += bill.getId()+","+ bill.getNameCus()+","+bill.getPhoneNumber()+","+bill.getDate()+","+bill.getDogList()+"\n";
         }
         bufferedWriter.write(str);
         bufferedWriter.close();

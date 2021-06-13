@@ -1,7 +1,7 @@
-id,DogBreed,Source,Classify,Age,Weigth,Price
-123,Alaska,China,chó kéo xe,3,40.5,800
-564,Pitbull,Mĩ,chó chọi,3,35.0,900
-321,Phốc,Pháp,chó cảnh,2,5.5,800
-679,Begie,Đức,chó giữ nhà,4,50.5,800
-564,Alaska,China,chó kéo xe,5,39.5,800
-654,Alaska,China,Giữ nhà,4,5.5,850
+Mã số,Giống chó,Nguồn gốc,Loại chó,Tuổi,Cân nặng,Giá tiền
+Alaska1,Alaska,China,chó kéo xe,3,40.5,800
+Pitbull1,Pitbull,Mĩ,chó chọi,3,35.0,900
+Phoc1,Phốc,Pháp,chó cảnh,2,5.5,700
+Becgie1,Becgie,Đức,chó giữ nhà,4,50.5,300
+Alaska2,Alaska,China,chó kéo xe,5,39.5,450
+Alaska2,Alaska,Mĩ,Chó cảnh,6,45.0,900

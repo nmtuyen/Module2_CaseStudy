@@ -22,11 +22,11 @@ public class DogManage implements ManageDog {
     public DogManage() {
         dogList = new ArrayList<>();
 
-        dogList.add(new Dog("123", "Alaska", "China", "chó kéo xe", 3, 40.5, 800));
-        dogList.add(new Dog("564", "Pitbull", "Mĩ", "chó chọi", 3, 35, 900));
-        dogList.add(new Dog("321", "Phốc", "Pháp", "chó cảnh", 2, 5.5, 700));
-        dogList.add(new Dog("679", "Begie", "Đức", "chó giữ nhà", 4, 50.5, 300));
-        dogList.add(new Dog("564", "Alaska", "China", "chó kéo xe", 5, 39.5, 450));
+        dogList.add(new Dog("Alaska1", "Alaska", "China", "chó kéo xe", 3, 40.5, 800));
+        dogList.add(new Dog("Pitbull1", "Pitbull", "Mĩ", "chó chọi", 3, 35, 900));
+        dogList.add(new Dog("Phoc1", "Phốc", "Pháp", "chó cảnh", 2, 5.5, 700));
+        dogList.add(new Dog("Becgie1", "Becgie", "Đức", "chó giữ nhà", 4, 50.5, 300));
+        dogList.add(new Dog("Alaska2", "Alaska", "China", "chó kéo xe", 5, 39.5, 450));
     }
     public Dog input(){
         Scanner scanner = new Scanner(System.in);
@@ -63,6 +63,7 @@ public class DogManage implements ManageDog {
         return -1;
     }
 
+
     @Override
     public void add(Dog dog) {
         dogList.add(dog);
@@ -82,18 +83,18 @@ public class DogManage implements ManageDog {
         Scanner scanner = new Scanner(System.in);
         int index = checkById(id);
         if (index == -1){
-            System.out.println("Không có thông tin chó cần xóa");
+            System.out.println("Pet này đã hết");
         }else{
-            System.out.println("Xác nhận xóa: 1.Yes  2.No");
+            System.out.println("Xác nhận bán: 1.Yes  2.No");
             System.out.print("Nhập lựa chọn:  ");
             int choice = scanner.nextInt();
             switch (choice){
                 case 1:
                     dogList.remove(index);
-                    System.out.println("Đã xóa thành công");
+                    System.out.println("Đã bán thành công");
                     break;
                 case 2:
-                    System.out.println("Đã hủy lệnh xóa");
+                    System.out.println("Đã hủy lệnh bán");
                     break;
                 default:
                     System.out.print("Mời nhập lại: ");

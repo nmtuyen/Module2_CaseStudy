@@ -4,6 +4,8 @@ import model.*;
 import service.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -92,19 +94,49 @@ public class Menu {
                     }
                     break;
                 case 6:
-                    System.out.println("Nhập id pet muốn bán");
-                    String idPetSell = scanner.nextLine();
-                    Dog dogSell = dogManage.sellDog(idPetSell);
+                    List<Dog> listSell = new ArrayList<>();
+                    System.out.println("Nhập số lượng pet bán");
+                    int amount = scanner.nextInt();
+                    scanner.nextLine();
+                    for (int i = 0; i < amount; i++){
+                        System.out.println("Nhập id pet muốn bán");
+                        String idPetSell = scanner.nextLine();
+                        if (dogManage.findById(idPetSell) != null){
+                            dogManage.delete(idPetSell);
+                            for (int j = 0; j < dogManage.findById(idPetSell).size(); j++){
+                                listSell.add(dogManage.findById(idPetSell).get(j));
+                            }
+                        }else
+                            System.out.println("Không có pet này");
+                    }
                     Bill bill = new Bill();
                     System.out.println("Nhập id bill");
                     String idBill = scanner.nextLine();
                     bill.setId(idBill);
                     bill = inputOutput.inputBill();
-                    bill.setDog(dogSell);
-                    bill.setSales(dogSell.getPrice());
+                    bill.setDogList(listSell);
+                    bill.setSales();
                     billManage.addBill(bill);
                     billManage.display();
-                    readWriteBill.writeBill(LIST_BILL, billManage.getBillArrayList());
+                    System.out.println("List ped còn lại: ");
+                    dogManage.display();
+
+//                    System.out.println("Nhập id pet muốn bán");
+//                    String idPetSell = scanner.nextLine();
+//                    Bill bill = new Bill();
+//                    bill.setDogList(dogManage.findById(idPetSell));
+
+//                    Dog dogSell = dogManage.sellDog(idPetSell);
+//                    Bill bill = new Bill();
+//                    System.out.println("Nhập id bill");
+//                    String idBill = scanner.nextLine();
+//                    bill.setId(idBill);
+//                    bill = inputOutput.inputBill();
+//                    bill.setDog(dogSell);
+//                    bill.setSales(dogSell.getPrice());
+//                    billManage.addBill(bill);
+//                    billManage.display();
+//                    readWriteBill.writeBill(LIST_BILL, billManage.getBillArrayList());
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + choice);
