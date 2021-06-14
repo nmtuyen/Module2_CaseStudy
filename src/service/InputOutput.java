@@ -1,10 +1,8 @@
 package service;
 
+import model.Account;
 import model.Bill;
-import model.Dog;
 
-import java.io.*;
-import java.util.List;
 import java.util.Scanner;
 
 public class InputOutput {
@@ -34,5 +32,24 @@ public class InputOutput {
         bill.setDate(date);
 
         return bill;
+    }
+    public Account inputAcc(){
+        Account account = new Account();
+        Scanner sc = new Scanner(System.in);
+
+        String user;
+        System.out.println("Nhập tên tài khoản");
+        do {
+            user = sc.nextLine();
+            if (!Validate.validate(user, Validate.NAME_CUSTOMER_REGEX) || user == null){
+                System.out.println("Sai định dạng, nhập lại điiiiiii");
+            }
+        }while (!Validate.validate(user, Validate.NAME_CUSTOMER_REGEX) || user == null);
+        account.setUser(user);
+
+        String pass = sc.nextLine();
+        account.setPass(pass);
+
+        return account;
     }
 }

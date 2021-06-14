@@ -18,7 +18,9 @@ public class BillManage implements ManageBill {
     public BillManage() {
 
         billArrayList = new ArrayList<>();
-//        billArrayList.add(new Bill("11062021", "Chương", "036594834", "11/06/2021", new Dog("213", "Pitull", "China", "Chó cảnh", 3, 15.5, 390), 390));
+        billArrayList.add(new Bill("11062021", "Chương", "036594834", "11/06/2021"));
+        billArrayList.add(new Bill("13062021", "Phong", "036665151", "13/06/2021"));
+        billArrayList.add(new Bill("15062021", "Chiến", "036565654", "15/06/2021"));
     }
 
     public ArrayList<Bill> getBillArrayList() {
@@ -58,6 +60,15 @@ public class BillManage implements ManageBill {
                 return o1.getSales()-o2.getSales();
             }
         });
+    }
+    public int findBillMax(String id){
+        int maxSales = billArrayList.get(0).getSales();
+        for (int i = 1; i < billArrayList.size(); i++){
+            if (billArrayList.get(i).getSales()>maxSales){
+                maxSales = billArrayList.get(i).getSales();
+            }
+        }
+        return maxSales;
     }
 
 
