@@ -28,7 +28,14 @@ public class InputOutput {
         }while ((!Validate.validate(phoneNumber, Validate.PHONE_NUMBER_REGEX) || phoneNumber == null));
         bill.setPhoneNumber(phoneNumber);
         System.out.print("Nhập ngày bán: ");
-        String date = scanner.nextLine();
+
+        String date;
+        do {
+            date = scanner.nextLine();
+            if ((!Validate.validate(phoneNumber, Validate.DATE_REGEX) || date == null)){
+                System.out.println("Sai định dạng, nhập lại điiiiiii");
+            }
+        }while ((!Validate.validate(phoneNumber, Validate.DATE_REGEX) || date == null));
         bill.setDate(date);
 
         return bill;
