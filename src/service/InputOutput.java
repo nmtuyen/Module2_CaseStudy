@@ -9,7 +9,7 @@ public class InputOutput {
     public Bill inputBill(){
         Bill bill = new Bill();
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Nhập tên khách hàng: ");
+        System.out.print("Nhập tên khách hàng(không dùng kí tự đặc biệt): ");
         String nameCus;
         do {
             nameCus = scanner.nextLine();
@@ -27,7 +27,7 @@ public class InputOutput {
             }
         }while ((!Validate.validate(phoneNumber, Validate.PHONE_NUMBER_REGEX) || phoneNumber == null));
         bill.setPhoneNumber(phoneNumber);
-        System.out.print("Nhập ngày bán: ");
+        System.out.print("Nhập ngày bán(dd/mm/yyyy): ");
 
         String date;
         do {
